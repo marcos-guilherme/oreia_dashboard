@@ -1,0 +1,40 @@
+name: noise_guard_app
+description: Um painel para monitoramento de ruído IoT.
+
+# Prevenir publicação acidental no pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  # A mensagem de erro sugeriu ^3.8.0.
+  # Você pode usar uma faixa mais ampla se preferir, como:
+  # sdk: '>=3.0.0 <4.0.0'
+  sdk: '^3.8.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # A dependência do gráfico que seu código precisa
+  fl_chart: ^0.68.0
+  flutter_bloc: ^9.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# A seção flutter é necessária para coisas como fontes e imagens.
+flutter:
+  uses-material-design: true
+
+  # Para usar a fonte 'Inter' como no seu main.dart, você precisaria
+  # baixar os arquivos da fonte (ex: do Google Fonts) para uma pasta
+  # (ex: assets/fonts/) e descomentar as linhas abaixo:
+  #
+  # fonts:
+  #   - family: Inter
+  #     fonts:
+  #       - asset: assets/fonts/Inter-Regular.ttf
+  #       - asset: assets/fonts/Inter-Bold.ttf
+  #         weight: 700
