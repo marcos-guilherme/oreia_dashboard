@@ -1,16 +1,40 @@
-# dashboard_iot
+Aqui está uma versão limpa e profissional, sem emojis.
 
-A new Flutter project.
+````markdown
+# Dashboard IoT
 
-## Getting Started
+Um painel de controle desenvolvido em Flutter Web para monitoramento e gerenciamento de dispositivos IoT.
 
-This project is a starting point for a Flutter application.
+## Tecnologias
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter
+- Dart
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Como rodar o projeto
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para executar este projeto, é necessário ter o Flutter SDK instalado na sua máquina.
+
+1. Clone o repositório:
+   ```bash
+   git clone [https://github.com/marcos-guilherme/dashboard_iot.git](https://github.com/marcos-guilherme/dashboard_iot.git)
+````
+
+2.  Entre na pasta do projeto:
+
+    ```bash
+    cd dashboard_iot
+    ```
+
+3.  Instale as dependências:
+
+    ```bash
+    flutter pub get
+    ```
+
+4.  Execute no navegador:
+
+    ```bash
+    flutter run -d chrome
+    ```
+
+<!-- end list -->
