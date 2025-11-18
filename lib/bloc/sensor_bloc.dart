@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-// Importe o FlSpot do fl_chart
 import 'package:fl_chart/fl_chart.dart'; 
 import 'sensor_repository.dart';
 
@@ -12,11 +11,9 @@ class SensorBloc extends Bloc<SensorEvent, SensorState> {
   final SensorRepository _sensorRepository;
   StreamSubscription? _sensorSubscription;
 
-  // --- Nossas variáveis de estado interno ---
   List<FlSpot> _noiseHistory = [];
   int _xCounter = 0;
-  final int _maxHistorySize = 20; // Quantos pontos mostrar no gráfico
-  // ------------------------------------------
+  final int _maxHistorySize = 20; 
 
   SensorBloc({required SensorRepository sensorRepository})
       : _sensorRepository = sensorRepository,
@@ -29,7 +26,6 @@ class SensorBloc extends Bloc<SensorEvent, SensorState> {
   void _onStreamStarted(SensorStreamStarted event, Emitter<SensorState> emit) {
     _sensorSubscription?.cancel();
     
-    // Reseta o histórico quando o stream (re)inicia
     _noiseHistory = [];
     _xCounter = 0;
     emit(SensorInitial()); // Emite o estado inicial para mostrar "loading"
@@ -61,9 +57,6 @@ class SensorBloc extends Bloc<SensorEvent, SensorState> {
     // Incrementa o nosso eixo X
     _xCounter++;
     
-    // Emite o novo estado com o nível atual E a lista de histórico
-    // É importante criar uma NOVA lista (List.from) para que o BLoC
-    // e o BlocBuilder detectem a mudança de estado.
     emit(SensorDataUpdated(newNoiseLevel, List.from(_noiseHistory)));
   }
 

@@ -6,7 +6,6 @@ import 'package:noise_guard_app/features/dashboard/widgets/gauge_card.dart';
 import 'package:noise_guard_app/features/dashboard/widgets/line_chart_card.dart';
 
 class ChartsRow extends StatelessWidget {
-  // --- ALTERAÇÃO PRINCIPAL: Recebe ambos os dados ---
   final double currentNoiseLevel;
   final List<FlSpot> noiseHistory;
 
@@ -15,15 +14,12 @@ class ChartsRow extends StatelessWidget {
     required this.currentNoiseLevel,
     required this.noiseHistory,
   });
-  // ------------------------------------------------
 
   @override
   Widget build(BuildContext context) {
-    // A Row não pode ser 'const' pois seus filhos são dinâmicos
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // --- ALTERAÇÃO PRINCIPAL: Passa o histórico ---
         Expanded(
           flex: 3,
           child: LineChartCard(
@@ -32,7 +28,6 @@ class ChartsRow extends StatelessWidget {
         ),
         // --------------------------------------------
         const SizedBox(width: 20),
-        // --- ALTERAÇÃO PRINCIPAL: Passa o valor atual ---
         Expanded(
           flex: 1,
           child: GaugeCard(

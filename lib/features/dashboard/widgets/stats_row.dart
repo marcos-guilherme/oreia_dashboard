@@ -5,18 +5,15 @@ import 'package:noise_guard_app/common_widgets/stat_card.dart';
 import 'package:noise_guard_app/core/theme/app_colors.dart';
 
 class StatsRow extends StatelessWidget {
-  // --- ALTERAÇÃO PRINCIPAL: Recebe o dado ---
   final double currentNoiseLevel;
 
   const StatsRow({
     super.key,
-    required this.currentNoiseLevel, // <-- ADICIONADO
+    required this.currentNoiseLevel,O
   });
-  // ------------------------------------------
 
   @override
   Widget build(BuildContext context) {
-    // A Row não pode ser 'const' pois um de seus filhos agora é dinâmico
     return Row(
       children: [
         const Expanded(
@@ -29,7 +26,6 @@ class StatsRow extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 20),
-        // --- ALTERAÇÃO PRINCIPAL: Card dinâmico ---
         Expanded(
           child: StatCard(
             title: 'Nível Médio', // ou "Nível Atual"

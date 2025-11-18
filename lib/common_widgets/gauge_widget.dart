@@ -3,12 +3,12 @@ import 'dart:math' as math;
 import 'package:noise_guard_app/core/theme/app_colors.dart';
 
 // Widget Customizado para o Medidor (Gauge)
-// Movido para 'common_widgets' para reutilização.
 class GaugeWidget extends StatelessWidget {
   final double value;
   final double maxValue;
   final double startAngle;
   final double sweepAngle;
+  final Color valueColor;
 
   const GaugeWidget({
     super.key,
@@ -16,6 +16,7 @@ class GaugeWidget extends StatelessWidget {
     this.maxValue = 100,
     this.startAngle = 135, // Início (12h é 270, 9h é 180, 8h é ~135)
     this.sweepAngle = 270, // Total (de 8h a 4h)
+    this.valueColor = DashboardColors.lineRed,
   });
 
   @override
@@ -30,7 +31,7 @@ class GaugeWidget extends StatelessWidget {
         sweepAngle: sweepAngle,
         valueAngle: valueAngle,
         backgroundColor: DashboardColors.gaugeBackground,
-        valueColor: DashboardColors.lineRed,
+        valueColor: valueColor,
       ),
       child: Container(),
     );

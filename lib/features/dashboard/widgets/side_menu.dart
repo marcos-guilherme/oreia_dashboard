@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noise_guard_app/core/theme/app_colors.dart';
 
-// --- WIDGETS DO MENU LATERAL (AGORA INTERATIVO) ---
 class SideMenu extends StatelessWidget {
   // 1. Novos parâmetros para estado e callback
   final int selectedIndex;
@@ -62,7 +61,6 @@ class SideMenu extends StatelessWidget {
           ),
           // Seção PRINCIPAL
           _buildSectionTitle('PRINCIPAL'),
-          // 2. Itens do menu agora usam 'selectedIndex' e 'onTapped'
           _buildMenuItem(
             icon: Icons.bar_chart_rounded,
             text: 'Painel',
@@ -88,7 +86,6 @@ class SideMenu extends StatelessWidget {
             onTap: () => onTapped(3),
           ),
           const SizedBox(height: 20),
-          // Seção CONFIGURAÇÕES
           _buildSectionTitle('CONFIGURAÇÕES'),
           _buildMenuItem(
             icon: Icons.settings_outlined,
@@ -122,12 +119,11 @@ class SideMenu extends StatelessWidget {
     );
   }
 
-  // 3. _buildMenuItem agora aceita um VoidCallback 'onTap'
   Widget _buildMenuItem({
     required IconData icon,
     required String text,
     bool isSelected = false,
-    VoidCallback? onTap, // Adicionado
+    VoidCallback? onTap, 
   }) {
     final color =
         isSelected ? DashboardColors.whiteText : DashboardColors.lightText;

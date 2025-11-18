@@ -12,7 +12,6 @@ class MainContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // --- ALTERAÇÃO PRINCIPAL: O layout é envolvido por um BlocBuilder ---
     return BlocBuilder<SensorBloc, SensorState>(
       builder: (context, state) {
         // Extrai os dados do estado, com valores padrão
@@ -24,13 +23,11 @@ class MainContent extends StatelessWidget {
           currentHistory = state.noiseHistory;
         }
 
-        // Usamos um SingleChildScrollView para evitar overflow em telas menores
         return SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Título Estático ---
               Text(
                 'Visão Geral do Painel',
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
@@ -38,8 +35,6 @@ class MainContent extends StatelessWidget {
                     ),
               ),
               const SizedBox(height: 24),
-
-              // --- Conteúdo Dinâmico (depende do estado) ---
 
               // Estado de Carregamento
               if (state is SensorInitial)
@@ -65,7 +60,6 @@ class MainContent extends StatelessWidget {
                   ),
                 ),
 
-              // Estado de Sucesso (Temos dados!)
               if (state is SensorDataUpdated)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,8 +75,7 @@ class MainContent extends StatelessWidget {
                       noiseHistory: currentHistory,
                     ),
                     const SizedBox(height: 20),
-                    // (Aqui você pode adicionar mais widgets estáticos,
-                    // como uma tabela de logs ou alertas recentes)
+
                   ],
                 ),
             ],
@@ -90,6 +83,5 @@ class MainContent extends StatelessWidget {
         );
       },
     );
-    // ------------------------------------------------------------------
   }
 }

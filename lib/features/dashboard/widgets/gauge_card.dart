@@ -5,20 +5,17 @@ import 'package:noise_guard_app/common_widgets/gauge_widget.dart';
 import 'package:noise_guard_app/core/theme/app_colors.dart';
 
 class GaugeCard extends StatelessWidget {
-  // --- ALTERAÇÃO PRINCIPAL: Recebe o dado ---
   final double currentValue;
+
 
   const GaugeCard({
     super.key,
     required this.currentValue,
   });
-  // ------------------------------------------
 
   @override
   Widget build(BuildContext context) {
     const double maxValue = 100.0; // O máximo do medidor
-
-    // --- Lógica dinâmica para cor e texto ---
     String statusText;
     Color valueColor;
     if (currentValue > 75) {
@@ -48,11 +45,9 @@ class GaugeCard extends StatelessWidget {
             const SizedBox(height: 20),
             SizedBox(
               height: 220, // Altura fixa para o medidor
-              // --- ALTERAÇÃO PRINCIPAL: Passa o valor para o GaugeWidget ---
               child: GaugeWidget(
                 value: currentValue,
                 maxValue: maxValue,
-                // Você pode até passar a cor dinâmica, se o GaugeWidget suportar
                 valueColor: valueColor, 
               ),
             ),
@@ -66,7 +61,6 @@ class GaugeCard extends StatelessWidget {
                   ?.copyWith(fontSize: 26, color: valueColor),
             ),
             const SizedBox(height: 4),
-            // --- Texto de status dinâmico ---
             Text(
               statusText,
               style: Theme.of(context)

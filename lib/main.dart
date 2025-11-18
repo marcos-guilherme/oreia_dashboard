@@ -4,8 +4,6 @@ import 'package:noise_guard_app/bloc/sensor_bloc.dart';
 import 'package:noise_guard_app/bloc/sensor_repository.dart';
 import 'package:noise_guard_app/features/dashboard/screens/dashboard_screen.dart';
 
-// O ponto de entrada principal do aplicativo.
-// Agora está limpo e apenas inicializa o app.
 void main() {
   runApp(NoiseGuardApp());
 }

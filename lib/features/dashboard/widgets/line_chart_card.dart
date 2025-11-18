@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:noise_guard_app/core/theme/app_colors.dart';
 
-// -- WIDGET DO GRÁFICO DE LINHA --
 class LineChartCard extends StatelessWidget {
-  // --- ALTERAÇÃO PRINCIPAL: Recebe o histórico de dados ---
   final List<FlSpot> noiseHistory;
 
   const LineChartCard({
@@ -26,7 +24,6 @@ class LineChartCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Cabeçalho do Gráfico (pode continuar estático)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -67,14 +64,12 @@ class LineChartCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 24),
-            // --- ALTERAÇÃO PRINCIPAL: Passa os dados para o gráfico ---
             SizedBox(
               height: 300,
               child: _NoiseLineChart(spots: noiseHistory),
             ),
             // --------------------------------------------------------
             const SizedBox(height: 16),
-            // --- Legenda (simplificada para 1 sensor) ---
             const _ChartLegend(),
           ],
         ),
@@ -126,15 +121,12 @@ class _LegendItem extends StatelessWidget {
 }
 
 class _NoiseLineChart extends StatelessWidget {
-  // --- ALTERAÇÃO PRINCIPAL: Recebe os pontos ---
   final List<FlSpot> spots;
 
   const _NoiseLineChart({required this.spots});
-  // -------------------------------------------
 
   @override
   Widget build(BuildContext context) {
-    // --- Verificação de segurança para lista vazia ---
     if (spots.isEmpty) {
       return const Center(
         child: Text('Aguardando dados do sensor...'),
@@ -155,7 +147,6 @@ class _NoiseLineChart extends StatelessWidget {
             );
           },
         ),
-        // Linha de limite (ex: 75 dB)
         extraLinesData: ExtraLinesData(
           horizontalLines: [
             HorizontalLine(
@@ -167,7 +158,6 @@ class _NoiseLineChart extends StatelessWidget {
           ],
         ),
         titlesData: FlTitlesData(
-          // --- Eixo X (inferior) dinâmico ---
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
@@ -183,7 +173,7 @@ class _NoiseLineChart extends StatelessWidget {
                   axisSide: meta.axisSide,
                   space: 8.0,
                   child: Text(
-                    value.toInt().toString(), // Mostra o "contador"
+                    value.toInt().toString(), 
                     style: const TextStyle(
                       color: DashboardColors.subText,
                       fontSize: 10,
@@ -224,14 +214,12 @@ class _NoiseLineChart extends StatelessWidget {
             left: BorderSide(color: DashboardColors.gaugeBackground, width: 1),
           ),
         ),
-        // --- Limites dinâmicos ---
         minX: spots.first.x, // O X do primeiro item da lista
         maxX: spots.last.x, // O X do último item da lista
         minY: 30, // Valor fixo abaixo do mínimo esperado
         maxY: 90, // Valor fixo acima do máximo esperado
         // -------------------------
         lineBarsData: [
-          // --- USA OS DADOS REAIS ---
           _buildLineChartBarData(spots, DashboardColors.lineRed),
         ],
         lineTouchData: LineTouchData(

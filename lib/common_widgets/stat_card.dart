@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noise_guard_app/core/theme/app_colors.dart';
 
-// Este widget foi movido para 'common_widgets'
-// pois pode ser reutilizado em outras telas.
 class StatCard extends StatelessWidget {
   final String title;
   final String value;
