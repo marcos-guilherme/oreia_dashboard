@@ -19,6 +19,7 @@ dependencies:
   # A dependência do gráfico que seu código precisa
   fl_chart: ^0.68.0
   flutter_bloc: ^9.1.1
+  web_socket_channel: ^2.4.0
 
 dev_dependencies:
   flutter_test:

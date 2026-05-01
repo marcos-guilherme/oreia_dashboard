@@ -42,22 +42,17 @@ class SensorBloc extends Bloc<SensorEvent, SensorState> {
 
   void _onDataReceived(_SensorDataReceived event, Emitter<SensorState> emit) {
     final double newNoiseLevel = event.data;
-    
-    // Cria um novo ponto para o gráfico
     final newSpot = FlSpot(_xCounter.toDouble(), newNoiseLevel);
-    
-    // Adiciona o novo ponto à nossa lista interna
-    _noiseHistory.add(newSpot);
 
-    // Se a lista for muito grande, remove o item mais antigo (do início)
+    _noiseHistory.add(newSpot);
     if (_noiseHistory.length > _maxHistorySize) {
       _noiseHistory.removeAt(0);
     }
-    
-    // Incrementa o nosso eixo X
     _xCounter++;
-    
-    emit(SensorDataUpdated(newNoiseLevel, List.from(_noiseHistory)));
+
+    final avg = _noiseHistory.fold(0.0, (sum, s) => sum + s.y) / _noiseHistory.length;
+
+    emit(SensorDataUpdated(newNoiseLevel, avg, List.from(_noiseHistory)));
   }
 
   @override

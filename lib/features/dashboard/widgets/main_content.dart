@@ -16,10 +16,12 @@ class MainContent extends StatelessWidget {
       builder: (context, state) {
         // Extrai os dados do estado, com valores padrão
         double currentNoiseLevel = 0.0;
+        double averageNoiseLevel = 0.0;
         List<FlSpot> currentHistory = [];
 
         if (state is SensorDataUpdated) {
           currentNoiseLevel = state.noiseLevel;
+          averageNoiseLevel = state.averageNoiseLevel;
           currentHistory = state.noiseHistory;
         }
 
@@ -64,9 +66,8 @@ class MainContent extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // 1. Passa o dado atual para o StatsRow
                     StatsRow(
-                      currentNoiseLevel: currentNoiseLevel,
+                      averageNoiseLevel: averageNoiseLevel,
                     ),
                     const SizedBox(height: 20),
                     // 2. Passa o dado atual e o histórico para o ChartsRow

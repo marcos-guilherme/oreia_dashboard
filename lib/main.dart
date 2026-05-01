@@ -13,7 +13,7 @@ class NoiseGuardApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: RepositoryProvider<SensorRepository>(
-        create: (context) => EmulatedSensorRepository(),
+        create: (context) => ApiSensorRepository(),
         child: BlocProvider<SensorBloc>(
           create: (context) =>
               SensorBloc(sensorRepository: context.read<SensorRepository>())

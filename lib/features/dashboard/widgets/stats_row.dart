@@ -5,11 +5,11 @@ import 'package:noise_guard_app/common_widgets/stat_card.dart';
 import 'package:noise_guard_app/core/theme/app_colors.dart';
 
 class StatsRow extends StatelessWidget {
-  final double currentNoiseLevel;
+  final double averageNoiseLevel;
 
   const StatsRow({
     super.key,
-    required this.currentNoiseLevel,O
+    required this.averageNoiseLevel,
   });
 
   @override
@@ -19,7 +19,7 @@ class StatsRow extends StatelessWidget {
         const Expanded(
           child: StatCard(
             title: 'Sensores Ativos',
-            value: '24', // (Dado estático por enquanto)
+            value: '24',
             subtitle: '↑ Todos online',
             subtitleColor: DashboardColors.green,
             icon: Icons.sensors,
@@ -28,8 +28,8 @@ class StatsRow extends StatelessWidget {
         const SizedBox(width: 20),
         Expanded(
           child: StatCard(
-            title: 'Nível Médio', // ou "Nível Atual"
-            value: '${currentNoiseLevel.toStringAsFixed(1)} dB', // <-- DADO REAL
+            title: 'Nível Médio',
+            value: '${averageNoiseLevel.toStringAsFixed(1)} dB',
             subtitle: '↑+2.1 de ontem', // (Estático por enquanto)
             subtitleColor: DashboardColors.green,
             icon: Icons.graphic_eq,
