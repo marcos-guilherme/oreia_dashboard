@@ -14,6 +14,7 @@ class SensorBloc extends Bloc<SensorEvent, SensorState> {
   List<FlSpot> _noiseHistory = [];
   int _xCounter = 0;
   final int _maxHistorySize = 20; 
+  double _maxPeak = 0.0; 
 
   SensorBloc({required SensorRepository sensorRepository})
       : _sensorRepository = sensorRepository,
@@ -44,6 +45,10 @@ class SensorBloc extends Bloc<SensorEvent, SensorState> {
     final double newNoiseLevel = event.data;
     final newSpot = FlSpot(_xCounter.toDouble(), newNoiseLevel);
 
+    if (newNoiseLevel > _maxPeak) {
+    _maxPeak = newNoiseLevel;
+    }
+
     _noiseHistory.add(newSpot);
     if (_noiseHistory.length > _maxHistorySize) {
       _noiseHistory.removeAt(0);
@@ -52,7 +57,7 @@ class SensorBloc extends Bloc<SensorEvent, SensorState> {
 
     final avg = _noiseHistory.fold(0.0, (sum, s) => sum + s.y) / _noiseHistory.length;
 
-    emit(SensorDataUpdated(newNoiseLevel, avg, List.from(_noiseHistory)));
+    emit(SensorDataUpdated(newNoiseLevel, avg, _maxPeak, List.from(_noiseHistory)));
   }
 
   @override

@@ -17,12 +17,14 @@ class MainContent extends StatelessWidget {
         // Extrai os dados do estado, com valores padrão
         double currentNoiseLevel = 0.0;
         double averageNoiseLevel = 0.0;
+        double peakNoiseLevel = 0.0;
         List<FlSpot> currentHistory = [];
 
         if (state is SensorDataUpdated) {
           currentNoiseLevel = state.noiseLevel;
           averageNoiseLevel = state.averageNoiseLevel;
           currentHistory = state.noiseHistory;
+          peakNoiseLevel = state.peakNoiseLevel;
         }
 
         return SingleChildScrollView(
@@ -68,6 +70,7 @@ class MainContent extends StatelessWidget {
                   children: [
                     StatsRow(
                       averageNoiseLevel: averageNoiseLevel,
+                      peakNoiseLevel: peakNoiseLevel,
                     ),
                     const SizedBox(height: 20),
                     // 2. Passa o dado atual e o histórico para o ChartsRow

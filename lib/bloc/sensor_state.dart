@@ -13,12 +13,18 @@ class SensorInitial extends SensorState {}
 class SensorDataUpdated extends SensorState {
   final double noiseLevel;
   final double averageNoiseLevel;
+  final double peakNoiseLevel;
   final List<FlSpot> noiseHistory;
 
-  const SensorDataUpdated(this.noiseLevel, this.averageNoiseLevel, this.noiseHistory);
+  const SensorDataUpdated(
+    this.noiseLevel,
+    this.averageNoiseLevel,
+    this.peakNoiseLevel,
+    this.noiseHistory,
+  );
 
   @override
-  List<Object> get props => [noiseLevel, averageNoiseLevel, noiseHistory];
+  List<Object> get props => [noiseLevel, averageNoiseLevel, peakNoiseLevel, noiseHistory];
 }
 
 // Estado de erro, caso o stream falhe
