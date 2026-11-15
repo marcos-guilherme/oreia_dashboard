@@ -1,6 +1,3 @@
-Aqui está uma versão limpa e profissional, sem emojis.
-
-````markdown
 # Dashboard IoT
 
 Um painel de controle desenvolvido em Flutter Web para monitoramento e gerenciamento de dispositivos IoT.
@@ -15,26 +12,20 @@ Um painel de controle desenvolvido em Flutter Web para monitoramento e gerenciam
 Para executar este projeto, é necessário ter o Flutter SDK instalado na sua máquina.
 
 1. Clone o repositório:
+
    ```bash
-   git clone [https://github.com/marcos-guilherme/dashboard_iot.git](https://github.com/marcos-guilherme/dashboard_iot.git)
-````
+   git clone https://github.com/marcos-guilherme/oreia_dashboard.git
+   cd oreia_dashboard
+   ```
 
-2.  Entre na pasta do projeto:
+2. Instale as dependências:
 
-    ```bash
-    cd dashboard_iot
-    ```
+   ```bash
+   flutter pub get
+   ```
 
-3.  Instale as dependências:
+3. Execute no navegador:
 
-    ```bash
-    flutter pub get
-    ```
-
-4.  Execute no navegador:
-
-    ```bash
-    flutter run -d chrome
-    ```
-
-<!-- end list -->
+   ```bash
+   flutter run -d chrome
+   ```
